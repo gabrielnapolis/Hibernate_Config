@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de Produtos</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:dataTable value="#{produtoCtrl.listagem}" var="objProduto" border="1">
+		<f:facet name="header">
+			<h:outputLabel value="Listagem de Produtos"/>
+			<br/>
+			<h:commandLink value="Cadastrar Novo Produto" action="#{produtoCtrl.actionInserir}"/>
+		</f:facet>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputLabel value="ID"/>
+			</f:facet>
+			<h:outputLabel value="#{objProduto.id}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputLabel value="Nome"/>
+			</f:facet>
+			<h:outputLabel value="#{objProduto.nome}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputLabel value="Preço"/>
+			</f:facet>
+			<h:outputLabel value="#{objProduto.preco}"/>
+		</h:column>
+		
+		<h:column>
+			<h:commandLink value="Apagar" action="#{produtoCtrl.actionExcluir(objProduto)}"/>
+		</h:column>
+		
+		<h:column>
+			<h:commandLink value="Alterar" action="#{produtoCtrl.actionAlterar(objProduto)}"/>
+		</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>
